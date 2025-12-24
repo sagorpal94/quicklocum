@@ -45,6 +45,11 @@ const data = {
             url: "/messages",
             icon: MessageSquare,
         },
+        {
+            title: "My Account",
+            url: "/my-account",
+            icon: MessageSquare,
+        },
     ],
     Contracts: [
         {

@@ -11,6 +11,7 @@ import PaymentHistoryPage from "@/pages/billing-legal/payment-history.jsx";
 import AgreementsPage from "@/pages/billing-legal/agreements.jsx";
 import JobBoardsPage from "@/pages/job-board/job-boards.jsx";
 import ApplicantsPage from "@/pages/job-board/applications.jsx";
+import MyAccountPage from "@/pages/my-account/my-account.jsx";
 
 export const router = createBrowserRouter([
     {
@@ -23,6 +24,9 @@ export const router = createBrowserRouter([
             }, {
                 path: "/messages",
                 element: <MessagesPage/>,
+            }, {
+                path: "/my-account",
+                element: <MyAccountPage/>,
             },
 
             {

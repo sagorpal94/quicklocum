@@ -22,6 +22,7 @@ import PaymentHistoryPage from "@/pages/billing-legal/payment-history.jsx";
 import AgreementsPage from "@/pages/billing-legal/agreements.jsx";
 import {getCurrentDate, getPageTitle} from "@/lib/utils.js";
 import {useEffect, useState} from "react";
+import MyAccountPage from "@/pages/my-account/my-account.jsx";
 
 const DashboardLayout = () => {
     const [scrolled, setScrolled] = useState(false);
@@ -104,6 +105,7 @@ const DashboardLayout = () => {
                     <Routes>
                         <Route path="/" element={<DashboardPages/>}/>
                         <Route path="/messages" element={<MessagesPage/>}/>
+                        <Route path="/my-account" element={<MyAccountPage/>}/>
 
                         <Route path="/my-contract" element={<MyContracts/>}/>
                         <Route path="/upcoming-work" element={<UpcomingWork/>}/>
