@@ -1,24 +1,15 @@
 import * as React from "react"
-import {ChevronsUpDown, Plus} from "lucide-react"
-
 import {
     DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
-    DropdownMenuShortcut,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import {
     SidebarMenu,
     SidebarMenuButton,
-    SidebarMenuItem,
-    useSidebar,
+    SidebarMenuItem
 } from "@/components/ui/sidebar"
 
 export function TeamSwitcher({teams}) {
-    const {isMobile} = useSidebar()
     const [activeTeam, setActiveTeam] = React.useState(teams[0])
 
     if (!activeTeam) {

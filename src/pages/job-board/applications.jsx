@@ -57,7 +57,7 @@ function ApplicationsPage() {
                     </button>
 
                     <TabsList
-                        className="!p-[4px] !bg-white md:ml-[50px] border border-[#E5E7EB] !w-auto !h-auto md:h-9  flex md:inline-flex flex-col md:flex-row">
+                        className="!p-[4px] !bg-white md:ml-[50px] border border-[#E5E7EB] w-auto md:w-[700px] !h-auto md:h-9  flex md:inline-flex flex-col md:flex-row">
 
                         {industries.map((item, index) => (
                             <TabsTrigger value={item.value} key={index}
