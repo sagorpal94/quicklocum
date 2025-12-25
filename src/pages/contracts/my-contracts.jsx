@@ -22,6 +22,7 @@ import {Badge} from "@/components/ui/badge"
 import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from "@/components/ui/dropdown-menu"
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select"
 import SimpleBar from "simplebar-react";
+import ContractsDetails from "@/components/contracts-details.jsx";
 
 const stats = [
     {label: "Open", value: 6},
@@ -109,6 +110,10 @@ function MyContracts() {
 
     const [sorting, setSorting] = useState([])
     const [columnFilters, setColumnFilters] = useState([])
+
+
+    const [selectedContract, setSelectedContract] = useState(null)
+    const [detailsSheetOpen, setDetailsSheetOpen] = useState(false)
 
     const columns = [
         {
@@ -211,17 +216,19 @@ function MyContracts() {
         },
         {
             id: "actions",
-            cell: () => {
+            cell: ({row}) => {
+                let contract = row.original;
                 return (
-                    <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
+                    <DropdownMenu >
+                        <DropdownMenuTrigger asChild >
                             <Button variant="ghost" className="p-0 h-8 w-8 rounded-md bg-[#F3F4F6] cursor-pointer">
                                 <span className="sr-only">Open menu</span>
                                 <MoreVertical className="h-6 w-6 text-[#2A394B]"/>
                             </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
-                            <DropdownMenuItem className="cursor-pointer">View Details</DropdownMenuItem>
+                            <DropdownMenuItem className="cursor-pointer" onClick={() => handleContractClick(contract)}>View
+                                Details</DropdownMenuItem>
                             <DropdownMenuItem className="cursor-pointer">Edit Contract</DropdownMenuItem>
                             <DropdownMenuItem className="text-destructive cursor-pointer">Delete</DropdownMenuItem>
                         </DropdownMenuContent>
@@ -277,6 +284,11 @@ function MyContracts() {
         }
 
         return rangeWithDots
+    }
+
+    const handleContractClick = (contract) => {
+        setSelectedContract(contract)
+        setDetailsSheetOpen(true)
     }
 
     useEffect(() => {
@@ -344,7 +356,7 @@ function MyContracts() {
                                         <button
                                             key={industry.id}
                                             onClick={() => setSelectedIndustry(industry.id)}
-                                            className={`flex shrink-0 items-center justify-between gap-1 rounded-md px-[6px] py-[4px] text-base transition-all duration-300 ease-in-out ${
+                                            className={`cursor-pointer flex shrink-0 items-center justify-between gap-1 rounded-md px-[6px] py-[4px] text-base transition-all duration-300 ease-in-out ${
                                                 selectedIndustry === industry.id
                                                     ? "border border-[#BDD7ED] bg-[#EAF5FE] text-[#2D8FE3] shadow-sm"
                                                     : "text-[#2A394B] hover:bg-white/50"
@@ -397,7 +409,8 @@ function MyContracts() {
                 selectedIndustry === 'dental-care' &&
                 <>
                     <h2 className="text-2xl mb-5 capitalize">dental-care</h2>
-                    {viewMode === "table" ? <ContractsTable table={table}/> : <ContractsGrid table={table}/>}
+                    {viewMode === "table" ? <ContractsTable table={table} onRowClick={handleContractClick}/> :
+                        <ContractsGrid table={table} onRowClick={handleContractClick}/>}
                 </>
             }
             {
@@ -422,6 +435,9 @@ function MyContracts() {
                 </>
             }
 
+            {
+                detailsSheetOpen && <ContractsDetails open={detailsSheetOpen} onOpenChange={setDetailsSheetOpen} contract={selectedContract}/>
+            }
 
             {/* Pagination */}
             <div
