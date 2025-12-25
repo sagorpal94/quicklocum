@@ -6,11 +6,12 @@ import {
 import {
     SidebarMenu,
     SidebarMenuButton,
-    SidebarMenuItem
+    SidebarMenuItem, useSidebar
 } from "@/components/ui/sidebar"
 
 export function TeamSwitcher({teams}) {
     const [activeTeam, setActiveTeam] = React.useState(teams[0])
+    const {open} = useSidebar()
 
     if (!activeTeam) {
         return null
@@ -25,10 +26,10 @@ export function TeamSwitcher({teams}) {
                             size="lg"
                             className="group data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
                         >
-                            <div
+                            {!open && <div
                                 className="data-[state=open]:hidden bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg group-data-[collapsible=icon]:flex group-data-[collapsible=expanded]:hidden">
                                 <activeTeam.logo className="size-4"/>
-                            </div>
+                            </div>}
                             <div className="grid flex-1 text-left text-sm leading-tight p-2 text-[#175CD3]">
                                 <span className="truncate font-bold text-2xl">{activeTeam.name}</span>
                             </div>

@@ -23,6 +23,8 @@ import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select"
 import SimpleBar from "simplebar-react";
 import ContractsDetails from "@/components/contracts-details.jsx";
+import {Link} from "react-router-dom";
+import {useSidebar} from "@/components/ui/sidebar.jsx";
 
 const stats = [
     {label: "Open", value: 6},
@@ -219,8 +221,8 @@ function MyContracts() {
             cell: ({row}) => {
                 let contract = row.original;
                 return (
-                    <DropdownMenu >
-                        <DropdownMenuTrigger asChild >
+                    <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
                             <Button variant="ghost" className="p-0 h-8 w-8 rounded-md bg-[#F3F4F6] cursor-pointer">
                                 <span className="sr-only">Open menu</span>
                                 <MoreVertical className="h-6 w-6 text-[#2A394B]"/>
@@ -397,11 +399,13 @@ function MyContracts() {
                             <LayoutGrid className="h-4 w-4" strokeWidth="1.5px"/>
                         </Button>
                     </div>
-                    <Button variant="default"
-                            className="rouned-[8px] py-[10px] px-[16px] gap-[6px] text-sm text-[#FBFBFB] bg-[#2D8FE3] hover:bg-[#2D8FE3] cursor-pointer">
-                        <CirclePlus className="w-5 h-5" strokeWidth="2px"/>
-                        Add Contract
-                    </Button>
+                    <Link to="/create-contract">
+                        <Button variant="default"
+                                className="rouned-[8px] py-[10px] px-[16px] gap-[6px] text-sm text-[#FBFBFB] bg-[#2D8FE3] hover:bg-[#2D8FE3] cursor-pointer">
+                            <CirclePlus className="w-5 h-5" strokeWidth="2px"/>
+                            Add Contract
+                        </Button>
+                    </Link>
                 </div>
             </div>
 
@@ -436,7 +440,8 @@ function MyContracts() {
             }
 
             {
-                detailsSheetOpen && <ContractsDetails open={detailsSheetOpen} onOpenChange={setDetailsSheetOpen} contract={selectedContract}/>
+                detailsSheetOpen && <ContractsDetails open={detailsSheetOpen} onOpenChange={setDetailsSheetOpen}
+                                                      contract={selectedContract}/>
             }
 
             {/* Pagination */}

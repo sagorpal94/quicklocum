@@ -24,7 +24,6 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 import {useState} from "react";
-import SimpleBar from 'simplebar-react';
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state"
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7
@@ -350,16 +349,14 @@ function SidebarContent({
   ...props
 }) {
   return (
-    <SimpleBar style={{maxHeight: "81.4vh"}}>
       <div
           data-slot="sidebar-content"
           data-sidebar="content"
           className={cn(
-              "flex min-h-0 flex-1 flex-col gap-2  group-data-[collapsible=icon]:overflow-hidden",
+              "flex min-h-0 flex-1 flex-col gap-2 overflow-y-auto  group-data-[collapsible=icon]:overflow-hidden",
               className
           )}
           {...props} />
-    </SimpleBar>
   );
 }
 

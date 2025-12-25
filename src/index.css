@@ -144,11 +144,3 @@ body {
         @apply bg-background text-[#0A0A0A];
     }
 }
-
-/*.data-\[active\=true\]\:bg-sidebar-accent {*/
-/*    &[data-active="true"] {*/
-/*        background-color: #2D8FE3;*/
-/*        color: #fff;*/
-/*        border-radius: 6px !important;*/
-/*    }*/
-/*}*/
