@@ -51,11 +51,11 @@ const DashboardLayout = () => {
     return (
             <SidebarProvider>
                 <AppSidebar/>
-                <SidebarInset>
+                <SidebarInset className="overflow-auto">
                     <header
                         className={`
                                     sticky top-0 flex justify-between pr-4 h-12 shrink-0 items-center gap-2 
-                                    transition-all duration-300 ease-in-out z-[999999] mb-5 
+                                    transition-all duration-300 ease-in-out z-20 mb-5 
                                     ${scrolled
                                                 ? "bg-white shadow-sm border-b border-gray-200"
                                                 : "bg-transparent border-b border-transparent shadow-none"

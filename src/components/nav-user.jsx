@@ -27,6 +27,7 @@ import {
     SidebarMenuItem,
     useSidebar,
 } from "@/components/ui/sidebar"
+import {Link} from "react-router-dom";
 
 export function NavUser({user}) {
     const {isMobile} = useSidebar()
@@ -78,10 +79,12 @@ export function NavUser({user}) {
                         </DropdownMenuGroup>
                         <DropdownMenuSeparator/>
                         <DropdownMenuGroup>
-                            <DropdownMenuItem className="cursor-pointer">
-                                <BadgeCheck/>
-                                Account
-                            </DropdownMenuItem>
+                            <Link to="/my-account">
+                                <DropdownMenuItem className="cursor-pointer">
+                                    <BadgeCheck/>
+                                    Account
+                                </DropdownMenuItem>
+                            </Link>
                             <DropdownMenuItem className="cursor-pointer">
                                 <CreditCard/>
                                 Billing

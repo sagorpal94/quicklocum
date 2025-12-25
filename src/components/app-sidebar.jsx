@@ -1,7 +1,5 @@
 import * as React from "react"
 import {
-    AudioWaveform,
-    Command,
     Frame, GalleryHorizontalEnd,
     LayoutDashboard,
     Map, MessageSquare,
@@ -43,11 +41,6 @@ const data = {
         {
             title: "Message",
             url: "/messages",
-            icon: MessageSquare,
-        },
-        {
-            title: "My Account",
-            url: "/my-account",
             icon: MessageSquare,
         },
     ],

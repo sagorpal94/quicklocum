@@ -16,7 +16,7 @@ function PositionCard({position}) {
                 {/* Header */}
                 <div className="mb-3 flex items-start justify-between gap-3 flex-wrap">
                     <div className="flex items-center gap-3">
-                        <span className="text-sm font-medium text-muted-foreground">#{position.id}</span>
+                        <span className="text-sm font-medium text-[#374151]">#{position.id}</span>
                     </div>
 
                     <div className="flex items-center gap-3 flex-wrap">
