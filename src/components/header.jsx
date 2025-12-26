@@ -4,13 +4,35 @@ import {Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbPage} from "@/comp
 import {getCurrentDate, getPageTitle} from "@/lib/utils.js";
 import {BellDot} from "lucide-react";
 import {useLocation} from "react-router-dom";
+import {useEffect, useState} from "react";
 
 function Header() {
+    const [scrolled, setScrolled] = useState(false);
     const {pathname} = useLocation()
     const {weekday, formattedDate} = getCurrentDate();
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 10) {
+                setScrolled(true);
+            } else {
+                setScrolled(false);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
     return (
         <header
-            className={`flex justify-between h-12 shrink-0 items-center gap-2  transition-all duration-75 ease-in-out z-40 pr-4`}>
+            className={`
+                sticky top-0 z-50 flex justify-between h-12 shrink-0 items-center gap-2 pr-4 
+                transition-all duration-300 ease-in-out 
+                ${scrolled
+                ? "bg-white/60 backdrop-blur-md shadow-sm border-b" 
+                : "bg-transparent"
+            }
+            `}>
             <div className="flex items-center gap-2 px-4">
                 <SidebarTrigger className="-ml-1 text-[#334155] cursor-pointer"/>
                 <Separator

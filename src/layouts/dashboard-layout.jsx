@@ -9,7 +9,7 @@ const DashboardLayout = () => {
     return (
         <SidebarProvider>
             <AppSidebar/>
-            <SidebarInset className="overflow-auto">
+            <SidebarInset>
                 <Header/>
                 <section className="flex flex-1 flex-col gap-4 p-4 pt-0 mt-5">
                     <Outlet/>
