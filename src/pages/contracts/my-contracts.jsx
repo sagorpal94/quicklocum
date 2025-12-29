@@ -310,7 +310,6 @@ function MyContracts() {
                 calculatedWidth = (screenW * 0.50) + 100;
             }
 
-            // কিন্তু ৬০৩ এর বেশি যেন না হয় (Laptop Max Limit)
             if (calculatedWidth > 603) {
                 calculatedWidth = 603;
             }

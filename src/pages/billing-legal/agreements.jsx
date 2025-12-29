@@ -1,15 +1,32 @@
-function AgreementsPage (){
-    return(
+import React from "react";
+
+const stats = [
+    {label: "Total Agreements", value: 5},
+    {label: "Pending Your Signature", value: 3},
+    {label: "Fully Signed", value: 2},
+    {label: "Expired", value: 0},
+];
+
+function AgreementsPage() {
+    return (
         <div>
-            <h2 className="text-center text-3xl my-5">Agreements Page</h2>
-            <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-                <div className="bg-muted/50 aspect-video rounded-xl"/>
-                <div className="bg-muted/50 aspect-video rounded-xl"/>
-                <div className="bg-muted/50 aspect-video rounded-xl"/>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                {stats.map((stat, index) => (
+                    <div
+                        key={index}
+                        className="border border-gray-200 rounded-lg p-4 flex flex-col justify-between h-24 hover:shadow-sm transition-shadow bg-white"
+                    >
+                        <span className={`text-base font-medium text-[#194185]`}>
+                          {stat.label}
+                        </span>
+                        <span className={`text-3xl text-right text-[#194185]`}>
+                          {stat.value}
+                        </span>
+                    </div>
+                ))}
             </div>
-            <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min"/>
         </div>
     )
 }
 
-export default AgreementsPage ;
+export default AgreementsPage;

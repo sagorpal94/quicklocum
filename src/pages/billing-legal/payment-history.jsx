@@ -1,13 +1,28 @@
+
+const stats = [
+    {label: "Total Applicants", value: 5},
+    {label: "Pending", value: 3},
+    {label: "Accepted", value: 2},
+];
 function PaymentHistoryPage(){
     return(
         <div>
-            <h2 className="text-center text-3xl my-5">Payment History Page</h2>
-            <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-                <div className="bg-muted/50 aspect-video rounded-xl"/>
-                <div className="bg-muted/50 aspect-video rounded-xl"/>
-                <div className="bg-muted/50 aspect-video rounded-xl"/>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+                {stats.map((stat, index) => (
+                    <div
+                        key={index}
+                        className="border border-gray-200 rounded-lg p-4 flex flex-col justify-between h-24 hover:shadow-sm transition-shadow bg-white"
+                    >
+                        <span className={`text-base font-medium text-[#194185]`}>
+                          {stat.label}
+                        </span>
+                        <span className={`text-3xl text-right text-[#194185]`}>
+                          {stat.value}
+                        </span>
+                    </div>
+                ))}
             </div>
-            <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min"/>
         </div>
     )
 }
