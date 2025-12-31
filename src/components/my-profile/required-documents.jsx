@@ -1,13 +1,15 @@
 import {useState} from "react";
-import {CloudUpload, Download, Edit, FileText, Upload} from "lucide-react";
+import {CloudUpload, Download, Edit, FileText} from "lucide-react";
 import {Button} from "@/components/ui/button.jsx";
+import FileUploadModal from "@/components/my-profile/file-upload-modal.jsx";
 
 export default function RequiredDocuments() {
-    const [documents, setDocuments] = useState([
+    const [documents] = useState([
         {id: 1, name: "Sample Document 01", size: "12 MB"},
         {id: 2, name: "Sample Document 01", size: "12 MB"},
         {id: 3, name: "Sample Document 01", size: "12 MB"},
     ])
+    const [isOpen, setIsOpen] = useState(false);
     return (
         <div className="space-y-4">
             {/* Required Documents List */}
@@ -51,13 +53,17 @@ export default function RequiredDocuments() {
             {/* Upload File Section */}
             <div>
                 <h2 className="mb-4 text-sm font-bold text-[#194185]">Upload File</h2>
-                <div className="rounded-lg border-2 border-dashed border-[#DBEEFF] bg-white p-8 text-center transition-colors hover:border-blue-400 hover:bg-blue-50">
+                <div
+                    className="rounded-lg border-2 border-dashed border-[#DBEEFF] bg-white p-8 text-center transition-colors hover:border-blue-400 hover:bg-blue-50">
                     <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full ">
-                        <CloudUpload className="h-8 w-8 text-[#2A394B]" />
+                        <CloudUpload className="h-8 w-8 text-[#2A394B]"/>
                     </div>
                     <h3 className="mb-2 text-xl font-medium text-[#374151]">Choose a file or drag & drop it here</h3>
                     <p className="mb-4 text-sm text-[#374151]">JPEG, PNG, PDG, and MP4 formats, up to 50MB</p>
-                    <button className="rounded-lg bg-blue-100 px-6 py-2 text-xs font-medium text-blue-700 transition-colors hover:bg-blue-200">
+                    <button
+                        className="cursor-pointer rounded-lg bg-blue-100 px-6 py-2 text-xs font-medium text-blue-700 transition-colors hover:bg-blue-200"
+                        onClick={() => setIsOpen(true)}
+                    >
                         Browse File
                     </button>
                 </div>
@@ -68,6 +74,11 @@ export default function RequiredDocuments() {
                     className="bg-[#216CD2] hover:bg-[#216CD2] text-white !cursor-pointer">
                 Edit Details
             </Button>
+
+            {isOpen && (
+                <FileUploadModal isOpen={isOpen} setIsOpen={setIsOpen}/>
+            )}
+
         </div>
     )
 }

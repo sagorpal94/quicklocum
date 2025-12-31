@@ -1,7 +1,7 @@
-import {Button} from "@/components/ui/button"
-import {Card, CardContent} from "@/components/ui/card"
-import {Badge} from "@/components/ui/badge"
-import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from "@/components/ui/dropdown-menu"
+import {Button} from "@/components/ui/button.jsx"
+import {Card, CardContent} from "@/components/ui/card.jsx"
+import {Badge} from "@/components/ui/badge.jsx"
+import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from "@/components/ui/dropdown-menu.jsx"
 
 import {Send, FileCheck, MoreVertical} from "lucide-react"
 
@@ -59,8 +59,8 @@ function PositionCard({position}) {
                 </div>
 
                 {/* Contract Details and Action */}
-                <div className="flex items-end justify-between gap-4">
-                    <div className="grid grid-cols-2 gap-x-8 gap-y-1">
+                <div className="flex items-end justify-between flex-wrap gap-2">
+                    <div className="grid grid-cols-2 gap-x-4 gap-y-1">
                         <div>
                             <p className="text-xs text-[#6B7280]">Contract value</p>
                             <p className="text-sm font-medium text-[#2D8FE3]">{position.contractValue}</p>

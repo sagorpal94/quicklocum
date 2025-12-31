@@ -60,6 +60,11 @@ const data = {
             url: "/applicants",
             icon: Frame,
         },
+        {
+            name: "My Profile",
+            url: "/my-profile",
+            icon: Frame,
+        },
     ],
     JobBoard: [
         {

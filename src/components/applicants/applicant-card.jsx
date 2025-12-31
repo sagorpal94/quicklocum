@@ -1,13 +1,13 @@
-import {Card} from "@/components/ui/card"
-import {Badge} from "@/components/ui/badge"
-import {Button} from "@/components/ui/button"
+import {Card} from "@/components/ui/card.jsx"
+import {Badge} from "@/components/ui/badge.jsx"
+import {Button} from "@/components/ui/button.jsx"
 import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuSeparator,
     DropdownMenuTrigger
-} from "@/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu.jsx"
 import {MoreVertical, X, Check, User, Users, FileText, CircleX} from "lucide-react"
 
 export default function ApplicantCard({

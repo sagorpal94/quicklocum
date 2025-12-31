@@ -4,17 +4,16 @@ import {
     FileText,
     CreditCard,
     FileBadge,
-    CheckCircle,
     Lock, BadgeCheck,
 } from "lucide-react"
 import {useState} from "react"
 import SimpleBar from "simplebar-react";
 import {Card, CardContent} from "@/components/ui/card.jsx";
-import AgencyInformation from "@/components/agency-information.jsx";
-import PrimaryContactInformation from "@/components/primary-contact-information.jsx";
-import ServiceDetails from "@/components/service-details.jsx";
-import BillingInformationForm from "@/components/billing-information-form.jsx";
-import RequiredDocuments from "@/components/required-documents.jsx";
+import AgencyInformation from "@/components/my-profile/agency-information.jsx";
+import PrimaryContactInformation from "@/components/my-profile/primary-contact-information.jsx";
+import ServiceDetails from "@/components/my-profile/service-details.jsx";
+import BillingInformationForm from "@/components/my-profile/billing-information-form.jsx";
+import RequiredDocuments from "@/components/my-profile/required-documents.jsx";
 
 const tabs = [
     {id: "category", label: "Institute Category & Details", icon: Building2},
@@ -42,8 +41,8 @@ export function InstituteTabs() {
                                 <button
                                     key={tab.id}
                                     onClick={() => setActiveTab(tab.id)}
-                                    className={`flex items-center gap-2 whitespace-nowrap border-b-2 px-6 py-4 text-sm font-medium transition-colors ${
-                                        isActive ? "border-blue-500 text-blue-600" : "border-transparent text-gray-600 hover:text-gray-900"
+                                    className={`flex items-center gap-2 whitespace-nowrap border-b-2 px-6 py-4 text-sm font-medium transition-colors cursor-pointer w-full ${
+                                        isActive ? "border-blue-500 text-blue-600 border-b-2" : "border-transparent text-gray-600 hover:text-gray-900"
                                     }`}
                                 >
                                     <Icon className="h-5 w-5"/>

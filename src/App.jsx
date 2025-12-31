@@ -13,6 +13,7 @@ import InvoicesPage from "@/pages/billing-legal/invoices.jsx";
 import PaymentHistoryPage from "@/pages/billing-legal/payment-history.jsx";
 import AgreementsPage from "@/pages/billing-legal/agreements.jsx";
 import MyProfile from "@/pages/my-profile.jsx";
+import MyAccountPage from "@/pages/my-account/my-account.jsx";
 
 function App() {
     return (
@@ -21,6 +22,7 @@ function App() {
                 <Route index element={<DashboardPages/>}/>
                 <Route path="/messages" element={<MessagesPage/>}/>
                 <Route path="/my-profile" element={<MyProfile/>}/>
+                <Route path="/my-account" element={<MyAccountPage/>}/>
                 <Route path="/my-contract" element={<MyContracts/>}/>
                 <Route path="/create-contract" element={<CreateContract/>}/>
                 <Route path="/upcoming-work" element={<UpcomingWork/>}/>

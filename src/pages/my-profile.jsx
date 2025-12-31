@@ -1,6 +1,6 @@
 import {Button} from '@/components/ui/button';
 import {Building2,Shield, Lock, Users} from 'lucide-react';
-import {InstituteTabs} from "@/components/institute-tabs.jsx";
+import {InstituteTabs} from "@/components/my-profile/institute-tabs.jsx";
 
 export default function MyProfile() {
     return (

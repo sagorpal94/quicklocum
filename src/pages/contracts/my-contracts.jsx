@@ -25,6 +25,7 @@ import SimpleBar from "simplebar-react";
 import ContractsDetails from "@/components/contracts-details.jsx";
 import {Link} from "react-router-dom";
 import {useSidebar} from "@/components/ui/sidebar.jsx";
+import MetricsGrid from "@/components/metrics-grid.jsx";
 
 const stats = [
     {label: "Open", value: 6},
@@ -324,21 +325,7 @@ function MyContracts() {
 
     return (
         <div className="min-h-screen">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                {stats.map((stat, index) => (
-                    <div
-                        key={index}
-                        className="border border-gray-200 rounded-lg p-4 flex flex-col justify-between h-24 hover:shadow-sm transition-shadow bg-white"
-                    >
-                        <span className={`text-base font-medium text-[#194185]`}>
-                          {stat.label}
-                        </span>
-                        <span className={`text-3xl text-right text-[#194185]`}>
-                          {stat.value}
-                        </span>
-                    </div>
-                ))}
-            </div>
+            <MetricsGrid stats={stats}/>
 
             <div className="mb-5 flex justify-center sm:justify-between flex-wrap items-center gap-2">
 

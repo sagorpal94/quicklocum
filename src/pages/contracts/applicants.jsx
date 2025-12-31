@@ -1,9 +1,10 @@
 import CustomTab from "@/components/custom-tab.jsx";
 import {Stethoscope, Bluetooth as Tooth, Circle, Calendar, SearchIcon} from "lucide-react";
-import ApplicantCard from "@/components/applicant-card.jsx";
+import ApplicantCard from "@/components/applicants/applicant-card.jsx";
 import React, {useState} from "react";
 import {Select, SelectValue, SelectItem, SelectTrigger, SelectContent} from "@/components/ui/select.jsx";
 import {InputGroup, InputGroupAddon, InputGroupInput} from "@/components/ui/input-group.jsx";
+import MetricsGrid from "@/components/metrics-grid.jsx";
 
 const applicants = [
     {
@@ -105,21 +106,7 @@ function Applicants() {
     const [selectedDate, setSelectedDate] = useState("daily")
     return (
         <div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-                {stats.map((stat, index) => (
-                    <div
-                        key={index}
-                        className="border border-gray-200 rounded-lg p-4 flex flex-col justify-between h-24 hover:shadow-sm transition-shadow bg-white"
-                    >
-                        <span className={`text-base font-medium text-[#194185]`}>
-                          {stat.label}
-                        </span>
-                        <span className={`text-3xl text-right text-[#194185]`}>
-                          {stat.value}
-                        </span>
-                    </div>
-                ))}
-            </div>
+            <MetricsGrid stats={stats}/>
 
             <div
                 className="flex flex-col lg:flex-row items-stretch lg:items-center lg:justify-between gap-3 w-full border border-[#E5E7EB] rounded-xl p-2 mb-6">
