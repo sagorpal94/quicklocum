@@ -2,12 +2,12 @@ import {Bar, BarChart, XAxis} from "recharts"
 import {
     Card,
     CardContent,
-} from "@/components/ui/card"
+} from "@/components/ui/card.jsx"
 import {
     ChartContainer,
     ChartTooltip,
     ChartTooltipContent,
-} from "@/components/ui/chart"
+} from "@/components/ui/chart.jsx"
 import SegmentedCapsule from "@/components/segmented-capsule.jsx";
 
 const chartData = [

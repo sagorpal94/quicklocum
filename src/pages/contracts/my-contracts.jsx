@@ -7,10 +7,10 @@ import {
     ArrowUpDown,
     MoreVertical,
     ChevronLeft,
-    ChevronRight, ListFilter, Stethoscope, XCircle, Clock,
+    ChevronRight, ListFilter, Stethoscope, Clock,
 } from "lucide-react";
-import ContractsTable from "@/components/contracts-table.jsx";
-import ContractsGrid from "@/components/contracts-grid.jsx";
+import ContractsTable from "@/components/contracts/contracts-table.jsx";
+import ContractsGrid from "@/components/contracts/contracts-grid.jsx";
 import {
     useReactTable,
     getCoreRowModel,
@@ -21,11 +21,10 @@ import {
 import {Badge} from "@/components/ui/badge"
 import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from "@/components/ui/dropdown-menu"
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@/components/ui/select"
-import SimpleBar from "simplebar-react";
-import ContractsDetails from "@/components/contracts-details.jsx";
+import ContractsDetails from "@/components/contracts/contracts-details.jsx";
 import {Link} from "react-router-dom";
-import {useSidebar} from "@/components/ui/sidebar.jsx";
 import MetricsGrid from "@/components/metrics-grid.jsx";
+import {Tabs, TabsList, TabsTrigger} from "@/components/ui/tabs.jsx";
 
 const stats = [
     {label: "Open", value: 6},
@@ -81,26 +80,22 @@ const contracts = Array.from({length: 100}, (_, index) => ({
 
 const industries = [
     {
-        id: "dental-care",
+        value: "dental-care",
         label: "Dental Care",
-        icon: (
-            <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M12 2c-4 0-8 2-8 8v3c0 1.5.5 3 2 4s2 3 2 5h8c0-2 .5-4 2-5s2-2.5 2-4v-3c0-6-4-8-8-8z"/>
-            </svg>
-        ),
+        icon: <Clock className="h-4 w-4 text-[#19B28A]"/>,
     },
     {
-        id: "pharmacy",
+        value: "pharmacy",
         label: "Pharmacy",
         icon: <Clock className="h-4 w-4 text-[#19B28A]"/>,
     },
     {
-        id: "nursing",
+        value: "nursing",
         label: "Nursing & Home Care",
         icon: <Stethoscope className="h-4 w-4 text-[#F0A33A]"/>,
     },
     {
-        id: "general-medicine",
+        value: "general-medicine",
         label: "General Medicine",
         icon: <Stethoscope className="h-4 w-4 text-[#A161F0]"/>,
     },
@@ -108,7 +103,7 @@ const industries = [
 
 function MyContracts() {
     const [viewMode, setViewMode] = useState("table")
-    const [selectedIndustry, setSelectedIndustry] = useState("dental-care")
+    const [selectedIndustry, setSelectedIndustry] = useState(industries[0].value)
     const [width, setWidth] = useState(250);
 
     const [sorting, setSorting] = useState([])
@@ -324,47 +319,38 @@ function MyContracts() {
     }, []);
 
     return (
-        <div className="min-h-screen">
+        <div className="min-h-screen md:w-[calc(100vw-304px)]">
             <MetricsGrid stats={stats}/>
 
-            <div className="mb-5 flex justify-center sm:justify-between flex-wrap items-center gap-2">
+            <div className="mb-5  flex justify-center sm:justify-between flex-wrap items-center gap-2">
 
-                <div className="flex flex-col sm:flex-row items-center gap-2 flex-wrap">
-                    <button
-                        className="cursor-pointer flex-shrink-0 w-9 h-9 flex items-center justify-center border border-gray-200 rounded-lg text-slate-500 hover:bg-gray-50">
-                        <ListFilter size={12}/>
-                    </button>
-
-                    <div className="flex-1 overflow-hidden">
-                        <div className="rounded-[12px] border border-[#E5E7EB] bg-white/32 p-1 backdrop-blur-md flex">
-                            <SimpleBar className="mx-auto w-[calc(100%-70px)] min-w-[250px] max-w-[603px]"
-                                       hidden={false} style={{width: width}}>
-                                <div className="flex items-center gap-2 ">
-                                    {industries.map((industry) => (
-                                        <button
-                                            key={industry.id}
-                                            onClick={() => setSelectedIndustry(industry.id)}
-                                            className={`cursor-pointer flex shrink-0 items-center justify-between gap-1 rounded-md px-[6px] py-[4px] text-base transition-all duration-300 ease-in-out ${
-                                                selectedIndustry === industry.id
-                                                    ? "border border-[#BDD7ED] bg-[#EAF5FE] text-[#2D8FE3] shadow-sm"
-                                                    : "text-[#2A394B] hover:bg-white/50"
-                                            }`}
+                <Tabs defaultValue={selectedIndustry} onValueChange={(e) => {
+                    setSelectedIndustry(e)
+                }} className="w-full lg:w-auto md:w-[calc(100vw-304px)]">
+                    <div className="flex items-center gap-2">
+                        <Button variant="secondary" size="sm">
+                            <ListFilter size={16}/>
+                        </Button>
+                        <div className="relative w-full overflow-x-auto scrollbar-hide overscroll-x-contain ">
+                            <TabsList
+                                className="!p-[4px] border border-[#E5E7EB] md:h-11 inline-flex h-auto w-auto gap-2 bg-transparent scrollbar-hide">
+                                {industries.map((industry) => {
+                                    return (
+                                        <TabsTrigger
+                                            key={industry.value}
+                                            value={industry.value}
+                                            className={selectedIndustry === industry.value ? "text-[#2D8FE3] !bg-[#EAF5FE] border border-[#BDD7ED] w-full md:w-auto cursor-pointer " : "w-full md:w-auto cursor-pointer"}
                                         >
-                                        <span className="transition-transform duration-300 ease-in-out">
-                                          {selectedIndustry === industry.id ? (
-                                              <XCircle className="h-4 w-4 text-[#2D8FE3]"/>
-                                          ) : (
-                                              industry.icon
-                                          )}
-                                        </span>
-                                            <span className="transition-colors duration-300">{industry.label}</span>
-                                        </button>
-                                    ))}
-                                </div>
-                            </SimpleBar>
+                                            {industry.icon}
+                                            {industry.label}
+                                        </TabsTrigger>
+                                    )
+                                })}
+                            </TabsList>
                         </div>
                     </div>
-                </div>
+                </Tabs>
+
 
                 <div className="flex items-center gap-2">
                     <div className="flex items-center gap-1 rounded-[12px] border border-[#E5E7EB] p-1 bg-white/[0.32]">
@@ -398,7 +384,6 @@ function MyContracts() {
             {
                 selectedIndustry === 'dental-care' &&
                 <>
-                    <h2 className="text-2xl mb-5 capitalize">dental-care</h2>
                     {viewMode === "table" ? <ContractsTable table={table} onRowClick={handleContractClick}/> :
                         <ContractsGrid table={table} onRowClick={handleContractClick}/>}
                 </>
@@ -406,21 +391,18 @@ function MyContracts() {
             {
                 selectedIndustry === 'pharmacy' &&
                 <>
-                    <h2 className="text-2xl mb-5 capitalize">pharmacy</h2>
                     {viewMode === "table" ? <ContractsTable table={table}/> : <ContractsGrid table={table}/>}
                 </>
             }
             {
                 selectedIndustry === 'nursing' &&
                 <>
-                    <h2 className="text-2xl mb-5 capitalize">nursing</h2>
                     {viewMode === "table" ? <ContractsTable table={table}/> : <ContractsGrid table={table}/>}
                 </>
             }
             {
                 selectedIndustry === 'general-medicine' &&
                 <>
-                    <h2 className="text-2xl mb-5 capitalize">general medicine</h2>
                     {viewMode === "table" ? <ContractsTable table={table}/> : <ContractsGrid table={table}/>}
                 </>
             }

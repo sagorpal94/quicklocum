@@ -1,7 +1,7 @@
 import {Card} from "@/components/ui/card.jsx";
-import ContractsChart from "@/components/contracts-chart.jsx";
-import {FinancialLineChart} from "@/components/financial-line-chart.jsx";
-import StatCard from "@/components/stat-card.jsx";
+import ContractsChart from "@/components/dashboard/contracts-chart.jsx";
+import {FinancialLineChart} from "@/components/dashboard/financial-line-chart.jsx";
+import StatCard from "@/components/dashboard/stat-card.jsx";
 import {LayoutGrid} from "lucide-react";
 
 function DashboardPages() {

@@ -1,7 +1,7 @@
-import {X, Calendar, Clock} from "lucide-react"
-import {Sheet, SheetContent, SheetHeader, SheetTitle} from "@/components/ui/sheet"
-import {Badge} from "@/components/ui/badge"
-import {Button} from "@/components/ui/button"
+import {X, Calendar, Clock, Clock4, Clock4Icon, SquareMinus} from "lucide-react"
+import {Sheet, SheetContent, SheetHeader, SheetTitle} from "@/components/ui/sheet.jsx"
+import {Badge} from "@/components/ui/badge.jsx"
+import {Button} from "@/components/ui/button.jsx"
 import React from "react";
 import SimpleBar from "simplebar-react";
 
@@ -13,21 +13,24 @@ function ContractsDetails({open, onOpenChange, contract}) {
                 {/* Header */}
                 <SheetHeader className="flex flex-row items-center justify-between border-b border-border px-6 py-4">
                     <div className="flex items-center gap-4">
-                        <SheetTitle className="text-xl text-[#2A394B] font-medium">General Dentistry Contract</SheetTitle>
-                        <Badge className="text-sm text-[#374151] bg-transparent py-1 px-2 border border-[#E5E7EB]">Contract ID {contract.id}</Badge>
+                        <SheetTitle className="text-xl text-[#2A394B] font-medium">General Dentistry
+                            Contract</SheetTitle>
+                        <Badge className="text-sm text-[#374151] bg-transparent py-1 px-2 border border-[#E5E7EB]">Contract
+                            ID {contract.id}</Badge>
                     </div>
                     <div className="flex items-center gap-2">
-                        <Badge variant="outline" className="text-xs bg-[#E1F7F3] py-[3px] px-2 text-[#19B28A] hover:bg-[#19B28A]/10">
+                        <Badge variant="outline"
+                               className="text-xs bg-[#E1F7F3] py-[3px] px-2 mr-5 text-[#19B28A] hover:bg-[#19B28A]/10">
                             {contract.status}
                         </Badge>
-                        <Button
-                            variant="ghost"
-                            size="icon"
-                            onClick={() => onOpenChange(false)}
-                            className="h-8 w-8 rounded-full cursor-pointer">
-                            <X className="h-4 w-4"/>
-                            <span className="sr-only">Close</span>
-                        </Button>
+                        {/*<Button*/}
+                        {/*    variant="ghost"*/}
+                        {/*    size="icon"*/}
+                        {/*    onClick={() => onOpenChange(false)}*/}
+                        {/*    className="h-8 w-8 rounded-full cursor-pointer">*/}
+                        {/*    <X className="h-4 w-4"/>*/}
+                        {/*    <span className="sr-only">Close</span>*/}
+                        {/*</Button>*/}
                     </div>
                 </SheetHeader>
 
@@ -186,6 +189,107 @@ function ContractsDetails({open, onOpenChange, contract}) {
                                         MAXIMUS, CLICK, MAXIDENT, PARADIGM, MACPRACTICE DDS, OPEN DENTAL SOFTWARE,
                                         DENTALWARE, EAGLESOFT, CLEARDENT, PROGIDENT, DENTITEK, SENSE, TDO, AUTOPIA,
                                         PROGITEK, AKITU ONE, GID, SIDEXIS, VISION
+                                    </p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div
+                            className="relative rounded-[8px] border border-[#E5E7EB] bg-white gap-5 pt-[20px] pr-[16px] pb-[12px] pl-[16px]">
+                        <span className="absolute -top-3 left-4 bg-white px-2 text-sm text-[#9CA3AF]">
+                            Job Description
+                        </span>
+                            <div className="grid grid-cols-1 gap-[20px] h-full">
+                                <div className="flex flex-col justify-center">
+                                    <label className="text-sm font-medium text-[#4B5563]">Detailed Job
+                                        Description</label>
+                                    <p className="text-base text-[#9CA3AF] font-light">Detailed Job Description</p>
+                                </div>
+                                <div className="flex flex-col justify-center">
+                                    <label className="text-sm font-medium text-[#4B5563]">Mission Description</label>
+                                    <p className="text-base text-[#9CA3AF] font-light">Mission Description</p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div
+                            className="relative rounded-[8px] border border-[#E5E7EB] bg-white gap-5 pt-[20px] pr-[16px] pb-[12px] pl-[16px]">
+                        <span className="absolute -top-3 left-4 bg-white px-2 text-sm text-[#9CA3AF]">
+                            Positions Sought
+                        </span>
+                            <div className="grid grid-cols-1 gap-[20px] mb-4 h-full">
+                                <div
+                                    className="mt-4 relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-lg border border-default">
+                                    <table className="w-full min-w-[650px] text-sm text-left rtl:text-right text-body">
+                                        <thead className="text-sm text-body bg-[#E5E7EB] border-b border-default">
+                                        <tr>
+                                            <th scope="col"
+                                                className="px-6 py-3 font-medium rounded-tl-[8px] w-[10%] sm:w-auto">
+                                                #
+                                            </th>
+                                            <th scope="col" className="px-6 py-3 font-medium w-[50%] sm:w-auto">
+                                                Position
+                                            </th>
+                                            <th scope="col"
+                                                className="px-6 py-3 font-medium rounded-tr-[8px] w-[35%] sm:w-auto">
+                                                Specialty
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr className="bg-neutral-primary border-b border-default">
+                                            <td scope="row"
+                                                className="px-6 py-4 font-medium text-heading whitespace-nowrap">
+                                                <span className="text-[#2A394B]">1</span>
+                                            </td>
+
+                                            <td className="px-6 py-4">
+                                                <p className="text-[#2A394B] text-sm">
+                                                    General Dentist
+                                                </p>
+                                            </td>
+                                            <td className="px-6 py-4 text-[#2A394B] text-sm">
+                                                Baker Street, Bridgewater, NS B4V 2N8, Canada
+                                            </td>
+                                        </tr>
+                                        <tr className="bg-neutral-primary border-b border-default">
+                                            <td scope="row"
+                                                className="px-6 py-4 font-medium text-heading whitespace-nowrap">
+                                                <span className="text-[#2A394B]">1</span>
+                                            </td>
+
+                                            <td className="px-6 py-4">
+                                                <p className="text-[#2A394B] text-sm">
+                                                    General Dentist
+                                                </p>
+                                            </td>
+                                            <td className="px-6 py-4 text-[#2A394B] text-sm">
+                                                Baker Street, Bridgewater, NS B4V 2N8, Canada
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div className="grid grid-cols-2 gap-[20px] h-full">
+                                <div className="flex flex-col justify-center">
+                                    <label className="text-sm font-medium text-[#4B5563]">Created At</label>
+                                    <p className="text-base text-[#9CA3AF] font-light">
+                                        <span className="flex items-center gap-1">
+                                            <Clock4 className="w-4 h-4"/>
+                                            12/5/2025, 10:29:42 AM
+                                        </span>
+                                    </p>
+                                </div>
+                                <div className="flex flex-col justify-center">
+                                    <label className="text-sm font-medium text-[#4B5563]">Updated At</label>
+                                    <p className="text-base text-[#9CA3AF] font-light">
+                                        <span className="flex items-center gap-1">
+                                            <Clock4 className="w-4 h-4"/>
+                                            12/5/2025, 10:29:42 AM
+                                        </span>
                                     </p>
                                 </div>
 

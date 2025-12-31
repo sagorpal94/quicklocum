@@ -1,6 +1,6 @@
-import {Badge} from "@/components/ui/badge"
-import {Button} from "@/components/ui/button"
-import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from "@/components/ui/dropdown-menu"
+import {Badge} from "@/components/ui/badge.jsx"
+import {Button} from "@/components/ui/button.jsx"
+import {DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger} from "@/components/ui/dropdown-menu.jsx"
 import {MoreVertical} from "lucide-react"
 
 function ContractsGrid({table}) {
