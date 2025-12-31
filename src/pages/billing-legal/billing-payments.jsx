@@ -2,8 +2,8 @@ import MatricsGrid from "@/components/metrics-grid.jsx";
 import {Card} from "@/components/ui/card.jsx";
 import {Info} from "lucide-react";
 import BillingPaymentTopBar from "@/components/billing-payment/billing-payment-top-bar.jsx";
-import KeyBenefits from "@/components/billing-payment/key-benefits.js";
-import BenefitTable from "@/components/billing-payment/benefit-table.js";
+import KeyBenefits from "@/components/billing-payment/key-benefits.jsx";
+import BenefitTable from "@/components/billing-payment/benefit-table.jsx";
 
 const billingPaymentsStats = [
     {label: "Total Spent", value: "$1,250.00"},
